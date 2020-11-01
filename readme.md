@@ -14,3 +14,9 @@ or simply do these steps instead of 4,5,7
 - run browser and visit http://127.0.0.1/install
 
 
+Deafult user credentials already filled up in the login form.
+
+email: email@email.com
+pass:  password
+
+
