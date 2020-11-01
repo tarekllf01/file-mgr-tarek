@@ -93,15 +93,15 @@ class FileManagerController extends Controller
             $rename = $this->fileRename($path . '/' . $old, $path . '/' . $new);
             if ($rename) {
                 // return "success";
-                return back()->with(['msg'=>'Renamed File','status'=>'success']);
+                return back()->with(['message'=>'Renamed File','alert-type'=>'success']);
                 // fm_set_msg(sprintf('Renamed from <b>%s</b> to <b>%s</b>', fm_enc($old), fm_enc($new)));
             }
             return "Error while renaming check file is allowed or note";
 
-            return back()->with(['msg'=>'Error while renaming check file is allowed or note','status'=>'error']);
+            return back()->with(['message'=>'Error while renaming check file is allowed or note','alert-type'=>'error']);
         }
         return "Invalid characters in file name";
-        return back()->with(['msg'=>'Invalid characters in file name','status'=>'error']);
+        return back()->with(['message'=>'Invalid characters in file name','alert-type'=>'error']);
         // fm_redirect(FM_SELF_URL . '?p=' . urlencode($fmPath));
 
     }

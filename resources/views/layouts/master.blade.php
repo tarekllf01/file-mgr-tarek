@@ -22,6 +22,13 @@
         @include('files.includes.navigation')
 
         <div id="wrapper" class="container-fluid">
+            <div class="row">
+            @if (session('message'))
+                <div class="m-3 row w-100 alert alert-{{session('alert-type')}}">
+                    {{session('message')}}
+                </div>
+            @endif
+        </div>
             <!-- main file lists -->
            @yield('contents')
         </div>
