@@ -56,10 +56,10 @@
                 </form>
 
                 <div class="container mt-5">
-                    <div class="alert alert-warning">For file manager version 1 controll settings app/config/file-manager</div>
+                    <div class="alert alert-warning">For file manager version 1 : configuration settings at app/config/file-manager</div>
                     <br>
                     <h5 class="text-center">OR</h5> <br>
-                    <div class="alert alert-warning">In ENV file</div>
+                    <div class="alert alert-warning">In ENV file add these keys</div>
                     <h6>
                         <p>
                             <h6>maxUploadFiles=300000 </h6>
