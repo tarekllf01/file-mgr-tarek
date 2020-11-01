@@ -4,7 +4,6 @@
     header("Expires: Sat, 26 Jul 2030 05:00:00 GMT");
     header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
     header("Pragma: no-cache");
-    global $root_url;
 @endphp
 @extends('layouts.master')
 
@@ -34,7 +33,10 @@
                     <tr>
                         <td class="nosort"></td>
                         {{-- <td class="border-0"><a href="?p={{urlencode($parent)}}"><i class="fa fa-chevron-circle-left go-back"></i> ..</a></td> --}}
-                        <td class="border-0"><a onclick="window.history.back()"><i class="fa fa-chevron-circle-left go-back"></i> ..</a></td>
+                        <td class="border-0">
+                            @if ($fmPath!='')
+                                <a onclick="window.history.back()"><i class="fa fa-chevron-circle-left go-back"></i> ..</a>
+                            @endif
                         <td class="border-0"></td>
                         <td class="border-0"></td>
                         <td class="border-0"></td>

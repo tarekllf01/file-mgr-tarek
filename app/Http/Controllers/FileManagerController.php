@@ -282,6 +282,10 @@ class FileManagerController extends Controller
             'alert-type' => 'danger',
         ]);
     }
+
+    public function copyFile () {
+
+    }
     public function fmCleanManager ($text) {
         return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
@@ -419,8 +423,6 @@ class FileManagerController extends Controller
         }
         return false;
     }
-
-
     private function makeDir($dir, $force){
         if (file_exists($dir)) {
             if (is_dir($dir)) {

@@ -41,7 +41,7 @@ return [
      *
      * null - auto select the first disk in the disk list
      */
-    'leftDisk' => 'public',
+    'leftDisk' => 'files',
 
     /**
      * Default disk for right manager
