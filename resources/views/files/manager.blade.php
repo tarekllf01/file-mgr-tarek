@@ -168,19 +168,12 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><label for="newfile">ItemType</label></p>
-
-                    {{-- <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="newfile" value="file" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline1">File</label>
-                    </div> --}}
-
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="customRadioInline2" name="newfile" value="folder" class="custom-control-input" checked="">
                         <label class="custom-control-label" for="customRadioInline2">Folder</label>
                     </div>
 
-                    <p class="mt-3"><label for="newfilename">ItemName </label></p>
+                    <p class="mt-3"><label for="newfilename">Folder Name </label></p>
                     <input type="text" name="newfilename" id="newfilename" value="" class="form-control">
                 </div>
                 <div class="modal-footer">

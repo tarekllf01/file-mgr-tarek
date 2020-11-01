@@ -23,12 +23,21 @@
 
         <div id="wrapper" class="container-fluid">
             <div class="row">
-            @if (session('message'))
-                <div class="m-3 row w-100 alert alert-{{session('alert-type')}}">
-                    {{session('message')}}
-                </div>
-            @endif
-        </div>
+                @if (session('message'))
+                    <div class="m-3 row w-100 alert alert-{{session('alert-type')}}">
+                        {{session('message')}}
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="m-3 row w-100 alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
             <!-- main file lists -->
            @yield('contents')
         </div>
