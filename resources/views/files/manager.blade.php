@@ -77,7 +77,7 @@
                             <td data-sort="a-{{ $modifyRaw }}">{{ $modif }}</td>
 
                             <td class="inline-actions">
-                                <a title="Delete" href="?p={{urlencode($fmPath)}}&del={{urlencode($f)}}" onclick="return confirm('Delete Folder?')\n \n ( {{urlencode($f)}})');"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                <a title="Delete" href="{{route('files.delete')}}?p={{urlencode($fmPath)}}&del={{urlencode($f)}}" onclick="return confirm('Delete Folder?')\n \n ( {{urlencode($f)}})');"> <i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                 <a title="Rename" href="#" onclick="rename('{{$service->fmEnc($fmPath)}}', '{{$service->fmEnc(addslashes($f))}}');return false;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                 {{-- <a title="CopyTo..." href="?p=&copy={{urlencode(trim($fmPath . '/' . $f, '/'))}}"><i class="fa fa-files-o" aria-hidden="true"></i></a>
                                 <a title="DirectLink" href="{{$service->fmEnc(route('files.manager') . ($fmPath != '' ? '/' . $fmPath : '') . '/' . $f . '/')}}" target="_blank"><i class="fa fa-link" aria-hidden="true"></i></a> --}}
@@ -130,7 +130,7 @@
                         <td data-sort="b-{{$modifyRaw}}">{{$modif}}</td>
                         <td class="inline-actions">
                             {{-- <a title="Preview" href="{{$filelink}}&quickView=1" data-toggle="lightbox" data-gallery="tiny-gallery" data-title="{{$service->fmConvertWin($f)}}" data-max-width="100%" data-width="100%"><i class="fa fa-eye"></i></a> --}}
-                            <a title="Delete" href="?p={{urlencode($fmPath)}}&del={{urlencode($f)}}" onclick="return confirm(' Delete File ? \n \n  {{urlencode($f)}}')"> <i class="fa fa-trash-o"></i></a>
+                            <a title="Delete" href="{{route('files.delete')}}?p={{urlencode($fmPath)}}&del={{urlencode($f)}}" onclick="return confirm(' Delete File ? \n \n  {{urlencode($f)}}')"> <i class="fa fa-trash-o"></i></a>
                             <a title="Rename" href="#" onclick="rename('{{$service->fmEnc($fmPath)}}', '{{$service->fmEnc(addslashes($f))}}');return false;"><i class="fa fa-pencil-square-o"></i></a>
                             {{-- <a title="CopyTo..." href="?p={{urlencode($fmPath)}}&copy={{urlencode(trim($fmPath . '/' . $f, '/'))}}"><i class="fa fa-files-o"></i></a> --}}
                             {{-- <a title="DirectLink" href="{{ $service->fmEnc($rootUrl . ($fmPath != '' ? '/' . $fmPath : '') . '/' . $f)}}" target="_blank"><i class="fa fa-link"></i></a> --}}

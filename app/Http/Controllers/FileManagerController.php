@@ -15,7 +15,6 @@ class FileManagerController extends Controller
     }
 
     public function index (Request $request) {
-
         if (!$request->hasAny('p') && empty($_FILES)) {
             // fm_redirect(FM_SELF_URL . '?p=');
             $url = route('files.manager');
@@ -214,6 +213,40 @@ class FileManagerController extends Controller
             exit();
         }
     }
+
+    public function deleteFile (Request $request) {
+        if (!$request->hasAny('p') && empty($_FILES)) {
+            $url = route('files.manager');
+            return redirect($url.'?p=');
+        }
+        // get path
+        $p = $request->p ? $request->p :  '';
+        $fmPath = $this->fmCleanManager($p);
+        // clean path
+        $del = str_replace('/', '', $this->fmCleanPath($request->del));
+        if ($del != '' && $del != '..' && $del != '.') {
+            $path = $this->rootPath;
+            if ($fmPath != '') {
+                $path .= '/' . $fmPath;
+            }
+            if ($this->deleteFileAndDir($path . '/' . $del)) {
+                return back()->with([
+                    'message' => 'Successfully deleted',
+                    'alert-type' => 'success',
+                ]);
+            }
+            return back()->with([
+                'message' => 'Could not deleted',
+                'alert-type' => 'danger',
+            ]);
+        }
+        return back()->with([
+            'message' => 'Invalid file or folder name',
+            'alert-type' => 'danger',
+        ]);
+
+
+    }
     public function fmCleanManager ($text) {
         return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
@@ -329,6 +362,28 @@ class FileManagerController extends Controller
         return $maxUpload;
     }
 
+
+    public function deleteFileAndDir($path) {
+        if (is_link($path)) {
+            return unlink($path);
+        } elseif (is_dir($path)) {
+            $objects = scandir($path);
+            $ok = true;
+            if (is_array($objects)) {
+                foreach ($objects as $file) {
+                    if ($file != '.' && $file != '..') {
+                        if (!$this->deleteFileAndDir($path . '/' . $file)) {
+                            $ok = false;
+                        }
+                    }
+                }
+            }
+            return ($ok) ? rmdir($path) : false;
+        } elseif (is_file($path)) {
+            return unlink($path);
+        }
+        return false;
+    }
 
 
 }
