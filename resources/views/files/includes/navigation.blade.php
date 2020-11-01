@@ -49,9 +49,9 @@
                 <li class="nav-item">
                     <a title="Upload" class="nav-link" href="{{route('files.uploader')}}?p={{urlencode($fmPath)}}&upload"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload</a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a title="NewItem" class="nav-link" href="#createNewItem" data-toggle="modal" data-target="#createNewItem"><i class="fa fa-plus-square"></i> NewItem</a>
-                </li> --}}
+                <li class="nav-item">
+                    <a title="NewItem" class="nav-link" href="#createNewItem" data-toggle="modal" data-target="#createNewItem"><i class="fa fa-plus-square"></i>New Dir</a>
+                </li>
                 <li class="nav-item">
                     <a title="Settings" class="dropdown-item nav-link" href="{{route('settings.main')}} "><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
                 </li>

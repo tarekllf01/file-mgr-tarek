@@ -1,5 +1,6 @@
-steps for the installation
-open the command window and follow the steps
+Steps for the installation.
+
+Open the command window and follow the steps
 
 1. git clone https://github.com/tarekllf01/file-mgr-tarek.git
 2. composer install

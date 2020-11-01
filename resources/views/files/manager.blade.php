@@ -170,10 +170,10 @@
                 <div class="modal-body">
                     <p><label for="newfile">ItemType</label></p>
 
-                    <div class="custom-control custom-radio custom-control-inline">
+                    {{-- <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="customRadioInline1" name="newfile" value="file" class="custom-control-input">
                         <label class="custom-control-label" for="customRadioInline1">File</label>
-                    </div>
+                    </div> --}}
 
                     <div class="custom-control custom-radio custom-control-inline">
                         <input type="radio" id="customRadioInline2" name="newfile" value="folder" class="custom-control-input" checked="">

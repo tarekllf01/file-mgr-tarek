@@ -244,8 +244,43 @@ class FileManagerController extends Controller
             'message' => 'Invalid file or folder name',
             'alert-type' => 'danger',
         ]);
+    }
 
-
+    public function newFolder(Request $request) {
+        // Create folder
+        $request->validate([
+            'new' => 'required',
+        ]);
+        // get path
+        $p = $request->hasAny('p') ? $request->p :  '';
+        $fmPath = $this->fmCleanManager($p);
+        $new = str_replace('/', '', $this->fmCleanPath(strip_tags($request->new)));
+        if ($this->isValidFileName($new) && $new != '' && $new != '..' && $new != '.') {
+            $path = $this->rootPath;
+            $fmPath = $this->fmCleanManager($p);
+            if ($fmPath != '') {
+                $path .= '/' . $fmPath;
+            }
+            if ($this->makeDir($path . '/' . $new, false) === true) {
+                return back()->with([
+                    'message' => 'Successfully created folder',
+                    'alert-type' => 'success',
+                ]);
+            } elseif ($this->makeDir($path . '/' . $new, false) === $path . '/' . $new) {
+                return back()->with([
+                    'message' => 'Already folder exists with this name',
+                    'alert-type' => 'danger',
+                ]);
+            }
+            return back()->with([
+                'message' => 'Folder could not created',
+                'alert-type' => 'danger',
+            ]);
+        }
+        return back()->with([
+            'message' => 'Invalid characters in  folder name',
+            'alert-type' => 'danger',
+        ]);
     }
     public function fmCleanManager ($text) {
         return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
@@ -386,4 +421,15 @@ class FileManagerController extends Controller
     }
 
 
+    private function makeDir($dir, $force){
+        if (file_exists($dir)) {
+            if (is_dir($dir)) {
+                return $dir;
+            } elseif (!$force) {
+                return false;
+            }
+            unlink($dir);
+        }
+        return mkdir($dir, 0777, true);
+    }
 }

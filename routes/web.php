@@ -45,6 +45,8 @@ Route::prefix('/files')->name('files.')->group(function(){
     Route::any('/uploader',[FileManagerController::class,'uploader'])->name('uploader');
     Route::any('/uploaderAjax',[FileManagerController::class,'uploaderAjax'])->name('uploaderAjax');
     Route::get('/delete',[ FileManagerController::class , 'deleteFile'])->name('delete');
+    Route::get('/newFolder',[ FileManagerController::class , 'newFolder'])->name('newFolder');
+
 
 });
 

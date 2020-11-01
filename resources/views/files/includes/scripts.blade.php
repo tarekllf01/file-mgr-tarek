@@ -54,7 +54,7 @@
     function newfolder(e) {
         var t = document.getElementById("newfilename").value,
             n = document.querySelector('input[name="newfile"]:checked').value;
-        null !== t && "" !== t && n && (window.location.hash = "#", window.location.search = "p=" + encodeURIComponent(e) + "&new=" + encodeURIComponent(t) + "&type=" + encodeURIComponent(n))
+        null !== t && "" !== t && n && (window.location.href = "{{route('files.newFolder')}}?p=" + encodeURIComponent(e) + "&new=" + encodeURIComponent(t) + "&type=" + encodeURIComponent(n))
     }
 
     function rename(e, t) {
